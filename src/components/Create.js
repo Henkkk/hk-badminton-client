@@ -21,7 +21,7 @@ export default function Create(){
         // When a post request is sent to the create url, we'll add a new record to the database.
         const newPost = { ...form };
      
-        await fetch("http://localhost:5050/record", {
+        await fetch("https://hk-badminton-server.onrender.com/record", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
