@@ -45,7 +45,7 @@ export default function Home(){
   useEffect(() => {
     async function getRecords() {
       //const response = await fetch('http://localhost:5050/record/');
-      const response = await fetch('https://hk-badminton.onrender.com/record/');
+      const response = await fetch('https://hk-badminton-server.onrender.com/record/');
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
