@@ -47,6 +47,8 @@ export default function Home(){
       //const response = await fetch('http://localhost:5050/record/');
       const response = await fetch('https://hk-badminton-server.onrender.com/record/');
 
+      console.log(response);
+
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
         window.alert(message);
