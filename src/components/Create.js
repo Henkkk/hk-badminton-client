@@ -1,13 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useEffect, useState} from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useHistory } from "react-router";
 
 export default function Create(){
     const [form, setForm] = useState({
         date: "",startTime: "",endTime: "",district: "",venue: "",grade: "",shuttlecock: "",signup: ""
     })
     const navigate = useNavigate();
+    const history = useHistory();
 
     function updateForm(value) {
         return setForm((prev) => {
@@ -16,7 +17,7 @@ export default function Create(){
     }
 
     async function onSubmit(e) {
-        //e.preventDefault();
+        e.preventDefault();
      
         // When a post request is sent to the create url, we'll add a new record to the database.
         const newPost = { ...form };
@@ -34,7 +35,9 @@ export default function Create(){
         });
 
         setForm({ date: "", venue: ""});
-        navigate("/");
+        history.push("/");
+
+        //navigate("/");
     }
 
     return (
