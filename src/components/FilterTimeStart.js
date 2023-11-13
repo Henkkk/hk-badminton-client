@@ -14,8 +14,9 @@ const FilterTimeStart = ({onFilterChange}) => {
     aria-label="Default select example" 
     value={search}
     onChange={handleSearchChange}
-    defaultValue = {"7"}
-    style={{width: 200, height: 38, marginBottom: 10, marginTop: 20, marginRight: 10, padding: 10, fontSize:14}}>
+    defaultValue = {""}
+    style={{width: 200, height: 38, marginBottom: 10, marginTop: 20, marginRight: 10, padding: 10, fontSize:13}}>
+        <option value="">任何時間</option>
         <option value="7">07:00</option>
         <option value="8">08:00</option>
         <option value="9">09:00</option>

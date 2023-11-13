@@ -1,26 +1,14 @@
 import { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import FilterDistrict from "./FilterDistrict";
 import FilterDate from "./FilterDate";
 import FilterTimeStart from "./FilterTimeStart";
 import FilterTimeEnd from "./FilterTimeEnd";
 
-const Record = (props) => {
-  <tr>
-    <td>{props.record.date}</td>
-    <td>{props.record.startTime}</td>
-    <td>{props.record.endTime}</td>
-    <td>{props.record.district}</td>
-    <td>{props.record.venue}</td>
-    <td>{props.record.grade}</td>
-    <td>{props.record.shuttlecock}</td>
-    <td>{props.record.signup}</td>
-  </tr>
-}
-
 export default function Home(){
   const [records, setRecords] = useState([]);
-  const [posts, setPosts] = useState(null);
+  //const [posts, setPosts] = useState(null);
   const [searchDistrict, setSearchDistrict] = useState('');
   const [searchDate, setSearchDate] = useState('');
   const [searchStartTime, setStartTime] = useState('');
@@ -42,12 +30,17 @@ export default function Home(){
     setEndTime(selectedEndTime);
   };
 
+  const clearFilter = () => {
+    setSearchDistrict("");
+    setSearchDate("");
+    setStartTime("");
+    setEndTime("");
+  }
+
   useEffect(() => {
     async function getRecords() {
       //const response = await fetch('http://localhost:5050/record/');
       const response = await fetch('https://hk-badminton-server.onrender.com/record/');
-
-      console.log(response);
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -64,25 +57,14 @@ export default function Home(){
     return;
   }, [records.length]);
 
-  function recordList() {
-    return records.map((record) => {
-      return (
-        <Record
-          record={record}
-          //deleteRecord={() => deleteRecord(record._id)}
-          key={record._id}
-        />
-      );
-    });
-  }
-
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'start'}}>
+      <div style={{ display: 'flex', justifyContent: 'flex-start'}}>
         <FilterDate onFilterChange={handleDateFilterChange}/>
         <FilterTimeStart onFilterChange={handleStartTimeFilterChange}/>  
         <FilterTimeEnd onFilterChange={handleEndTimeFilterChange}/>  
-        <FilterDistrict onFilterChange={handleDistrictFilterChange}/>  
+        <FilterDistrict onFilterChange={handleDistrictFilterChange}/> 
+        <Button className="btn-primary h-50" onClick={clearFilter} style={{width: 90, height: 40, marginBottom: 10, marginTop: 20, fontSize:15}}>清除選擇</Button> 
       </div>
       {/*<h3>Record List</h3>*/}
       <table className="table table-striped" style={{ marginTop: 20 }}>
@@ -101,11 +83,17 @@ export default function Home(){
         <tbody>{
         records
         .filter((item) => {
+          const hourStartString = item.startTime.split(":")[0];
+          const hourEndString = item.endTime.split(":")[0];
+
+          const timeValueStart = parseInt(hourStartString, 10);
+          const timeValueEnd = parseInt(hourEndString, 10);
+
           return (
             (searchDistrict.toLowerCase() === "" || item.district.includes(searchDistrict)) &&
             (searchDate === "" || item.date === searchDate) &&
-            (searchStartTime === "" || parseInt(item.startTime, 10) >= searchStartTime) &&
-            (searchEndTime === "" || parseInt(item.endTime, 10) >= searchEndTime)
+            (searchStartTime === "" || searchStartTime <= timeValueStart) &&
+            (searchEndTime === "" || searchEndTime >= timeValueEnd)
           );
         })
         .sort((a, b) => {

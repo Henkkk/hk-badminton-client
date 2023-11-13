@@ -1,14 +1,15 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useEffect, useState} from "react";
-import { useNavigate, useHistory } from "react-router";
+import { useNavigate } from "react-router";
+//import { useHistory } from 'react-router-dom';
 
 export default function Create(){
     const [form, setForm] = useState({
         date: "",startTime: "",endTime: "",district: "",venue: "",grade: "",shuttlecock: "",signup: ""
     })
     const navigate = useNavigate();
-    const history = useHistory();
+    //const history = useHistory();
 
     function updateForm(value) {
         return setForm((prev) => {
@@ -35,9 +36,9 @@ export default function Create(){
         });
 
         setForm({ date: "", venue: ""});
-        history.push("/");
+        //history.push("/");
 
-        //navigate("/");
+        navigate("/");
     }
 
     return (

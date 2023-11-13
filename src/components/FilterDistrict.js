@@ -8,7 +8,7 @@ const FilterDistrict = ({onFilterChange}) => {
         const selectedValue = e.target.value;
         setSearch(selectedValue);
         onFilterChange(selectedValue);
-      };
+    };
 
     return  <select 
     className="form-select" 
@@ -16,7 +16,7 @@ const FilterDistrict = ({onFilterChange}) => {
     value={search}
     onChange={handleSearchChange}
     defaultValue = {""}
-    style={{width: 200, height: 38, marginBottom: 10, marginTop: 20, marginRight: 10, padding: 10, fontSize:14}}>
+    style={{width: 200, height: 38, marginBottom: 10, marginTop: 20, marginRight: 10, padding: 10, fontSize:13}}>
         <option value="">所有地區</option>
         <option value="中西區">中西區</option>
         <option value="灣仔區">灣仔區</option>
