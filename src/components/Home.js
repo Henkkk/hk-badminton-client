@@ -78,6 +78,7 @@ export default function Home(){
             <th>等級</th>
             <th>用球</th>
             <th>報名方式</th>
+            <th>收費</th>
           </tr>
         </thead>
         <tbody>{
@@ -112,6 +113,7 @@ export default function Home(){
             <td>{record.grade}</td>
             <td>{record.shuttlecock}</td>
             <td>{record.signup}</td>
+            <td>{record.fee}</td>
           </tr>
         })
         }</tbody>

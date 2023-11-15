@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 
 export default function Create(){
     const [form, setForm] = useState({
-        date: "",startTime: "",endTime: "",district: "",venue: "",grade: "",shuttlecock: "",signup: ""
+        date: "",startTime: "",endTime: "",district: "",venue: "",grade: "",shuttlecock: "",signup: "",fee: ""
     })
     const navigate = useNavigate();
     //const history = useHistory();
@@ -118,6 +118,11 @@ export default function Create(){
       <div className="form-group">
       <label htmlFor="signup">報名方式</label>
       <input type="text" className="form-control" id="signup" value={form.signup} onChange={(e) => updateForm({ signup: e.target.value })}/>
+      </div>
+      <br/>
+      <div className="form-group">
+      <label htmlFor="signup">$收費</label>
+      <input type="text" className="form-control" id="fee" value={form.fee} onChange={(e) => updateForm({ signup: e.target.value })}/>
       </div>
       <br/>
       <Button type="submit">提交</Button>
