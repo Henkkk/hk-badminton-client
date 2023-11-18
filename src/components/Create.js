@@ -116,13 +116,13 @@ export default function Create(){
       </div>
       <br/>
       <div className="form-group">
-      <label htmlFor="signup">報名方式</label>
+      <label htmlFor="signup">Facebook連結</label>
       <input type="text" className="form-control" id="signup" value={form.signup} onChange={(e) => updateForm({ signup: e.target.value })}/>
       </div>
       <br/>
       <div className="form-group">
       <label htmlFor="signup">$收費</label>
-      <input type="text" className="form-control" id="fee" value={form.fee} onChange={(e) => updateForm({ signup: e.target.value })}/>
+      <input type="text" className="form-control" id="fee" value={form.fee} onChange={(e) => updateForm({ fee: e.target.value })}/>
       </div>
       <br/>
       <Button type="submit">提交</Button>

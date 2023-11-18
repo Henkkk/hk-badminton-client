@@ -30,6 +30,10 @@ export default function Home(){
     setEndTime(selectedEndTime);
   };
 
+  const handleSignUpButton = (url) => {
+    window.open(url, '_blank');
+  };
+
   const clearFilter = () => {
     setSearchDistrict("");
     setSearchDate("");
@@ -77,8 +81,8 @@ export default function Home(){
             <th>地點</th>
             <th>等級</th>
             <th>用球</th>
-            <th>報名方式</th>
             <th>收費</th>
+            <th>報名方式</th>
           </tr>
         </thead>
         <tbody>{
@@ -89,8 +93,11 @@ export default function Home(){
 
           const timeValueStart = parseInt(hourStartString, 10);
           const timeValueEnd = parseInt(hourEndString, 10);
+          
+          const currentDate = new Date().toISOString();
 
           return (
+            (item.date >= currentDate) &&
             (searchDistrict.toLowerCase() === "" || item.district.includes(searchDistrict)) &&
             (searchDate === "" || item.date === searchDate) &&
             (searchStartTime === "" || searchStartTime <= timeValueStart) &&
@@ -112,8 +119,9 @@ export default function Home(){
             <td>{record.venue}</td>
             <td>{record.grade}</td>
             <td>{record.shuttlecock}</td>
-            <td>{record.signup}</td>
+            {/*<td>{record.signup}</td>*/}
             <td>{record.fee}</td>
+            <th><Button class="btn btn-success" onClick={() => handleSignUpButton(record.signup)}>報名</Button></th>
           </tr>
         })
         }</tbody>
