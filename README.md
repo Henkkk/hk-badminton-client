@@ -5,4 +5,4 @@ Frontend: Javascript, React, Bootstrap </br>
 Backend: Node, MongoDB, Express
 
 Hosting on Render (https://hk-badminton.onrender.com/) </br>
-![Uploading Screenshot 2023-11-20 at 10.39.02 PM.png…](Screenshot 2023-11-20 at 10.39.02 PM.png)
+<img width="1381" alt="screenshot" src="https://github.com/Henkkk/hk-badminton-client/assets/88356994/b505c79d-bb04-47a4-8824-33df3e2b3f02">
