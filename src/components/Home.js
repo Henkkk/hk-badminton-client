@@ -13,6 +13,7 @@ export default function Home(){
   const [searchDate, setSearchDate] = useState('');
   const [searchStartTime, setStartTime] = useState('');
   const [searchEndTime, setEndTime] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleDistrictFilterChange = (selectedDistrict) => {
     setSearchDistrict(selectedDistrict);
@@ -54,6 +55,7 @@ export default function Home(){
       
       const records = await response.json();
       setRecords(records);
+      setLoading(true);
     }
  
     getRecords();
@@ -71,6 +73,7 @@ export default function Home(){
         <Button className="btn-primary h-50" onClick={clearFilter} style={{width: 90, height: 40, marginBottom: 10, marginTop: 20, fontSize:15}}>清除選擇</Button> 
       </div>
       {/*<h3>Record List</h3>*/}
+      {loading ? 
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
           <tr>
@@ -126,6 +129,11 @@ export default function Home(){
         })
         }</tbody>
       </table>
+        : 
+      <div class="spinner-border" role="status">
+        <span class="sr-only">更新場地資訊</span>
+      </div>
+      } 
     </>
   );
 }
