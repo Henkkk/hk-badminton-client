@@ -100,7 +100,7 @@ export default function Home(){
           const currentDate = new Date().toISOString();
 
           return (
-            (item.date >= currentDate) &&
+            //(item.date >= currentDate) &&
             (searchDistrict.toLowerCase() === "" || item.district.includes(searchDistrict)) &&
             (searchDate === "" || item.date === searchDate) &&
             (searchStartTime === "" || searchStartTime <= timeValueStart) &&
